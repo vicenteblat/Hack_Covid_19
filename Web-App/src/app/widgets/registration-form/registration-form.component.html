@@ -1,0 +1,63 @@
+<div class="title">Register for a Test</div>
+<!-- Submittion Form -->
+<form *ngIf="!submitting && !submitted" action="" class="box" [formGroup]="testRegistrationForm">
+  <div class="field">
+    <label class="label">Name</label>
+    <div class="control">
+      <input class="input" type="text" placeholder="John Doe" formControlName="name" required/>
+    </div>
+  </div>
+  <div class="field">
+    <label class="label">Email</label>
+    <div class="control has-icons-left">
+      <input class="input" type="email" placeholder="john.doe@company.com" formControlName="email" required/>
+      <span class="icon is-small is-left">
+        <i class="fa fa-envelope"></i>
+      </span>
+    </div>
+  </div>
+  <div class="field">
+    <label class="label">Upload ID</label>
+    <div class="control has-icons-left">
+      <input class="input" type="file" accept="image/*" capture="environment" (change)="onFileChange($event)" required>      
+      <span class="icon is-small is-left">
+        <i class="fa fa-camera"></i>
+      </span>
+    </div>
+  </div>
+  <div class="field">
+    <label class="label">Test Stand ID</label>
+    <div class="control">
+      <input class="input" type="text" placeholder="Found on top right corner of stand" formControlName="testStandID" required/>
+    </div>
+  </div>
+  <div *ngIf="!validForm">
+    {{errMessage}}
+  </div>
+  <div class="field">
+    <p class="control has-text-centered">
+      <a class="button is-primary" (click)="submitForm()">
+        Register for Test
+      </a>
+    </p>
+  </div>
+</form>
+
+<!-- Spinner -->
+<div *ngIf="submitting && !submitted" class="content has-text-centered">
+    <div class="lds-ripple"><div></div><div></div><div></div></div>
+    <p>Submitting information...</p>
+</div>
+
+<!-- Confirmation Dialog -->
+<div *ngIf="!submitting && submitted" class="box">
+  <article class="media">
+    <div class="media-content">
+      <div class="content">
+        <p>
+          {{message}}
+        </p>
+      </div>
+    </div>
+  </article>
+</div>

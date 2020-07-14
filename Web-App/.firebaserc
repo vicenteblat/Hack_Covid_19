@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "hack-covid-19-e4018": {
+      "hosting": {
+        "Web-App": [
+          "hack-covid-19-e4018"
+        ]
+      }
+    }
+  }
+}
